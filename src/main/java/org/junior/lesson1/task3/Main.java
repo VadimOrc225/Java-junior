@@ -1,17 +1,11 @@
 package org.junior.lesson1.task3;
 
-import ru.geekbrains.junior.lesson1.task1.Book;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> numbers = List.of(
-                3, 4, 6, -5, 5, 7, 8, 10, -14
-        );
+        List<Integer> numbers = List.of(3, 4, 6, -5, 5, 7, 8, 10, -14);
 // вариант из списка с промежуточным результатом
         List<Integer> evenNumbers = numbers
                 .stream()
