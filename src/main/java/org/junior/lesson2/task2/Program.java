@@ -44,6 +44,11 @@ public class Program {
         String updateQuery = queryBuilder.buildUpdateQuery(user);
         System.out.println("Update Query: " + updateQuery);
 
+        // Генерация SQL-запроса для удаления
+        UUID id = UUID.randomUUID();
+        String deleteQuery = queryBuilder.buildDeleteQuery(Employee.class, id);
+        System.out.println("Delete Query: " + deleteQuery);
+
     }
 
 }
