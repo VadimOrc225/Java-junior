@@ -1,0 +1,17 @@
+<ArrayList>
+  <item>
+    <name>Олег</name>
+    <age>21.0</age>
+    <gpa>4.4</gpa>
+  </item>
+  <item>
+    <name>Макс</name>
+    <age>20.0</age>
+    <gpa>4.5</gpa>
+  </item>
+  <item>
+    <name>Гриша</name>
+    <age>20.0</age>
+    <gpa>4.3</gpa>
+  </item>
+</ArrayList>
