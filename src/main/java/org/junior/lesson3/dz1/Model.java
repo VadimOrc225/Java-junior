@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,46 +15,46 @@ public class Model {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final XmlMapper xmlMapper = new XmlMapper();
-    public static void saveToFile(String fileName, List<Student2> students) {
+    public static void saveToFile(String fileName, Student2 student) {
         try {
             if (fileName.endsWith(".json")) {
                 objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-                objectMapper.writeValue(new File(fileName), students);
+                objectMapper.writeValue(new File(fileName), student);
             } else if (fileName.endsWith(".bin")) {
                 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
-                    oos.writeObject(students);
+                    oos.writeObject(student);
                 }
             } else if (fileName.endsWith(".xml")) {
                 xmlMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-                xmlMapper.writeValue(new File(fileName), students);
+                xmlMapper.writeValue(new File(fileName), student);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static List<Student2> loadFromFile(String fileName) {
-        List<Student2> students = new ArrayList<>();
-//        Student2 student = new Student2();
+    public static Student2 loadFromFile(String fileName) {
+//        List<Student2> students = new ArrayList<>();
+        Student2 student = new Student2();
 
         File file = new File(fileName);
         if (file.exists()) {
             try {
                 if (fileName.endsWith(".json")) {
-                    students = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, Student2.class));
+                    student = objectMapper.readValue(file, Student2.class);
                 } else if (fileName.endsWith(".bin")) {
                     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-                         students= (List<Student2>) ois.readObject();
+                         student= (Student2) ois.readObject();
                     }
                 } else if (fileName.endsWith(".xml")) {
-                    students = xmlMapper.readValue(file, xmlMapper.getTypeFactory().constructCollectionType(List.class, Student2.class));
+                    student = xmlMapper.readValue(file, Student2.class);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
-        return students;
+        return student;
     }
     public static void displayStudents(List<Student2> students) {
         System.out.println("Список студентов");

@@ -1,5 +1,7 @@
 package org.junior.lesson3.dz1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.*;
 
 public class Student2 implements Externalizable {
@@ -25,6 +27,7 @@ public class Student2 implements Externalizable {
         return age;
     }
 
+    @JsonIgnore
     public double getGPA() {
         return GPA;
     }
@@ -35,7 +38,14 @@ public class Student2 implements Externalizable {
         out.writeInt(age);
         out.writeDouble(GPA);
     }
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", GPA=" + GPA +
+                '}';
+    }
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         name = (String) in.readObject();

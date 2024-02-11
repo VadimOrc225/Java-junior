@@ -25,10 +25,11 @@ public class Dz3Task2Var2 {
         System.out.println(studentForLoad);
         // Поле GPA инициализируется 0.0 потому что оно transient - не сериализуется.
 
+        // Для json файла
         JsonMapper objectMapper = new JsonMapper();
         File fileJson = new File("studentVar2.json");
 
-        StudentVar2 studentForSaveJson = new StudentVar2("Alex", 19, 5);
+        StudentVar2 studentForSaveJson = new StudentVar2("Oleg", 19, 4.5);
         objectMapper.writeValue(fileJson, studentForSaveJson);
         StudentVar2 studentForLoadJson = objectMapper.readValue(fileJson, StudentVar2.class);
 
@@ -36,10 +37,11 @@ public class Dz3Task2Var2 {
         System.out.println(studentForLoadJson);
 
 
+        // Для xml файла
         XmlMapper xmlMapper = new XmlMapper();
         File fileXml = new File("studentVar2.xml");
 
-        StudentVar2 studentForSaveXml = new StudentVar2("Rox", 21, 3.9);
+        StudentVar2 studentForSaveXml = new StudentVar2("Andrey", 21, 3.9);
         xmlMapper.writeValue(fileXml, studentForSaveXml);
         StudentVar2 studentForLoadXml = xmlMapper.readValue(fileXml, StudentVar2.class);
 
